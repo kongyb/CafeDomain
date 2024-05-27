@@ -23,7 +23,7 @@ public class InventoryServiceImpl implements InventoryService{
     }
 
     @Override
-    public Inventory searchInventoryByInventoryId(Long inventoryId) {
+    public Inventory searchInventoryByInventoryId(InventoryId inventoryId) {
         return inventoryRepository.findByInventoryId(inventoryId);
     }
 
@@ -36,7 +36,7 @@ public class InventoryServiceImpl implements InventoryService{
     }
 
     @Override
-    public void disposeInventory(Long inventoryId) {
+    public void disposeInventory(InventoryId inventoryId) {
         Inventory inventory = inventoryRepository.findByInventoryId(inventoryId);
         inventory.dispose();
         inventoryRepository.save(inventory);
