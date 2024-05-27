@@ -44,9 +44,37 @@ public class InventoryServiceImpl implements InventoryService{
     }
 
     @Override
-    public void useInventory(Long inventoryId, int count) {
-        Inventory inventory = inventoryRepository.findByInventoryId(inventoryId);
-        inventory.use(count);
-        inventoryRepository.save(inventory);
+    public void useInventory(Long stockId, int count) {
+        List<Inventory> inventoryList = inventoryRepository.findByStockId(stockId);
+
+        // 현재 재고가 충분한지 확인
+        int total = 0;
+        for (Inventory inventory : inventoryList) {
+            if (inventory.isDisposed()) {
+                continue;
+            }
+            total += inventory.getLeftQuantity();
+            if (total >= count) {
+                break;
+            }
+        }
+
+        if (total < count) {
+            // 에러 생성??
+            return;
+        }
+
+        // 재고사용
+        for (Inventory inventory : inventoryList) {
+            if (inventory.isDisposed()) {
+                continue;
+            }
+            int currCount = Math.min(count, inventory.getLeftQuantity());
+            inventory.use(currCount);
+            inventoryRepository.save(inventory);
+            count -= currCount;
+        }
+
+
     }
 }
