@@ -10,7 +10,11 @@ import java.util.List;
 @Service
 public class InventoryServiceImpl implements InventoryService{
 
-    InventoryRepository inventoryRepository;
+    private final InventoryRepository inventoryRepository;
+
+    public InventoryServiceImpl(InventoryRepository inventoryRepository) {
+        this.inventoryRepository = inventoryRepository;
+    }
 
     @Override
     public List<Inventory> searchInventoryAll() {
