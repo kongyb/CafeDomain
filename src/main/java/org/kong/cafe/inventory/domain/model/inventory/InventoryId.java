@@ -19,4 +19,9 @@ public class InventoryId {
     public Date getInDate() {
         return inDate;
     }
+
+    @Override
+    public int hashCode() {
+        return this.stockId.hashCode() + this.inDate.hashCode();
+    }
 }
