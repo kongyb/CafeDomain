@@ -17,9 +17,25 @@ public class Inventory {
     public Inventory(InventoryId inventoryId, int quantity, int purchasePrice) {
         this.inventoryId = inventoryId;
         this.originalQuantity = quantity;
-        this.leftQuantity = 0;
+        this.leftQuantity = quantity;
         this.isDisposed = false;
         this.purchasePrice = purchasePrice;
+    }
+
+    public int getLeftQuantity() {
+        return leftQuantity;
+    }
+
+    public int getOriginalQuantity() {
+        return originalQuantity;
+    }
+
+    public Long getStockId() {
+        return inventoryId == null ? null : inventoryId.getStockId();
+    }
+
+    public InventoryId getInventoryId() {
+        return inventoryId;
     }
 
     public void use (int count) {
