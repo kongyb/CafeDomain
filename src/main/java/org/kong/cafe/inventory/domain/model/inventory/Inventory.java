@@ -30,6 +30,10 @@ public class Inventory {
         return originalQuantity;
     }
 
+    public boolean isDisposed() {
+        return isDisposed;
+    }
+
     public Long getStockId() {
         return inventoryId == null ? null : inventoryId.getStockId();
     }
