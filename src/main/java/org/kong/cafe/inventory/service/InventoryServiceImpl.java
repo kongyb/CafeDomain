@@ -32,19 +32,17 @@ public class InventoryServiceImpl implements InventoryService{
     }
 
     @Override
-    public void restockInventory(Long stockId, int quantity, int purchasePrice) {
+    public InventoryId restockInventory(Long stockId, int quantity, int purchasePrice) {
         InventoryId inventoryId = new InventoryId(stockId);
         Inventory inventory = new Inventory(inventoryId, quantity, purchasePrice);
-        inventoryRepository.save(inventory);
-        return;
+        return inventoryRepository.save(inventory);
     }
 
     @Override
-    public void disposeInventory(InventoryId inventoryId) {
+    public InventoryId disposeInventory(InventoryId inventoryId) {
         Inventory inventory = inventoryRepository.findByInventoryId(inventoryId);
         inventory.dispose();
-        inventoryRepository.save(inventory);
-        return;
+        return inventoryRepository.save(inventory);
     }
 
     @Override

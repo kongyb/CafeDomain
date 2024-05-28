@@ -22,9 +22,9 @@ public interface InventoryService {
 
     // 재고 충전
     // 어떤 재료를 얼마에 몇개를 샀는지
-    public void restockInventory(Long stockId, int count, int purchasePrice);
+    public InventoryId restockInventory(Long stockId, int count, int purchasePrice);
     // 재고 폐기
-    public void disposeInventory(InventoryId inventoryId);
+    public InventoryId disposeInventory(InventoryId inventoryId);
     // 재고 사용
     public void useInventory(Long inventoryId, int count);
 
