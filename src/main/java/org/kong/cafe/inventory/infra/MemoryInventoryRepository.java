@@ -50,7 +50,8 @@ public class MemoryInventoryRepository implements InventoryRepository{
     }
 
     @Override
-    public void save(Inventory inventory) {
+    public InventoryId save(Inventory inventory) {
         inventoryMap.put(inventory.getInventoryId(), inventory);
+        return inventory.getInventoryId();
     }
 }

@@ -14,5 +14,5 @@ public interface InventoryRepository {
     List<Inventory> findAll();
 
     // 재고 추가
-    public void save(Inventory inventory);
+    public InventoryId save(Inventory inventory);
 }
