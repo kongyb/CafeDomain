@@ -26,7 +26,7 @@ public interface InventoryService {
     // 재고 폐기
     public InventoryId disposeInventory(InventoryId inventoryId);
     // 재고 사용
-    public void useInventory(Long inventoryId, int count);
+    public void useInventory(Long stockId, int count);
 
 
 }
